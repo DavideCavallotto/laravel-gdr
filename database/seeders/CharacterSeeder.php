@@ -20,7 +20,7 @@ class CharacterSeeder extends Seeder
             $new_character = new Character();
 
             $new_character->nome = $faker->unique()->name();
-            $new_character->bio = $faker->paragraph(7);
+            $new_character->bio = $faker->paragraph(3);
             $new_character->difesa = $faker->randomNumber(2, false) + 1;
             $new_character->velocità = $faker->randomNumber(2, false) + 1;
             $new_character->hp = $faker->randomNumber(2, false) + 1;
