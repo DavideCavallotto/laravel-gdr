@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Index Template</h1>
-    <span>Test</span>
+    @forelse ($characters as $character)
+        {{ $characters->name }}
+    @empty
+        <span>Error</span>
+    @endforelse
 @endsection
