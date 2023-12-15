@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CharactersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 use App\Http\Controllers\Guest\PageController;
 
-Route::get('/', [PageController::class, 'index'])->name('index');
+Route::get('/', [CharactersController::class, 'index'])->name('index');
