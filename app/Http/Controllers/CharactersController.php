@@ -24,6 +24,9 @@ class CharactersController extends Controller
     // }
     }
 
+    /**
+     * CREATE
+     */
     public function create() {
 
         return view ('characters.create');
