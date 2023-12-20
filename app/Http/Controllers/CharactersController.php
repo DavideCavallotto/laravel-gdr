@@ -24,11 +24,17 @@ class CharactersController extends Controller
     // }
     }
 
+    /**
+     * CREATE
+     */
     public function create() {
 
         return view ('characters.create');
     }
 
+    /**
+     * STORE
+     */
     public function store(Request $request) {
 
         $data = $request->all();
