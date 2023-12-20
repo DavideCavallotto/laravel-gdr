@@ -9,11 +9,11 @@
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
 
-    <body>
+    <body class="w-full min-h-[100svh] bg-slate-600">
 
         @include('partials.header')
 
-        <main class="w-full min-h-[100svh] bg-slate-600">
+        <main>
             @yield('content')
         </main>
 
