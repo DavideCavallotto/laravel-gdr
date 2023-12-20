@@ -7,8 +7,9 @@
             <ul class="grid text-white grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 pt-16">
 
                 @forelse ($characters as $character)
-                    <li class="bg-slate-400 p-5 flex flex-col gap-4 h-[400px] rounded-md drop-shadow-md">
-                        <h2><span class="font-bold">Nome: </span>{{ $character->nome }}</h2>
+                <li>
+                <a class="bg-slate-400 p-5 flex flex-col gap-4 h-[400px] rounded-md drop-shadow-md" href="{{ route('characters.show',$character) }}">
+                            <h2><span class="font-bold">Nome: </span>{{ $character->nome }}</h2>
                         <h3 class=" flex-grow overflow-auto text-base">
                             <span class="font-bold">Bio: </span>{{ $character->bio }}
                         </h3>
@@ -35,6 +36,7 @@
                                 </span>
                             </li>
                         </ul>
+                        </a>
                     </li>
                 @empty
                 @endforelse
@@ -42,3 +44,6 @@
         </div>
     </section>
 @endsection
+
+
+
