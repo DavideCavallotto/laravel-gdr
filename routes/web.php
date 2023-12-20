@@ -15,7 +15,26 @@ use Illuminate\Support\Facades\Route;
 */
 use App\Http\Controllers\Guest\PageController;
 
+// GET
+
 Route::get('/', [CharactersController::class, 'index'])->name('index');
 
 Route::get('/characters/create',[CharactersController::class, 'create'])
 ->name('characters.create');
+
+Route::get('/characters/{character}', [CharactersController::class, 'show'])
+    ->name('characters.show');
+
+// POST
+
+Route::post('/characters', [CharactersController::class, 'store'])
+    ->name('characters.store');
+
+Route::get('/characters/{character}/edit', [CharactersController::class, 'edit'])
+    ->name('characters.edit');
+
+Route::put('/characters/{character}', [CharactersController::class,'update'])
+    ->name('characters.update');
+
+Route::delete('characters/{character}', [CharactersController::class,'destroy'])
+->name('characters.destroy');

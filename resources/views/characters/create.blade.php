@@ -4,7 +4,7 @@
 
     <section class="pt-5">
         <div class="container my-0 mx-auto">
-            <form action="#" method="POST" class="w-full max-w-lg">
+            <form action="{{ route('characters.store') }}" method="POST" class="w-full max-w-lg">
                 @csrf
                 <div class="flex flex-wrap -mx-3 mb-6">
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -14,7 +14,7 @@
                         </label>
                         <input
                             class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            id="grid-first-name" type="text" placeholder="Your PG Name" name="name">
+                            id="nome" type="text" placeholder="Your PG Name" name="nome">
                     </div>
                     <div class="w-full md:w-1/2 px-3">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
