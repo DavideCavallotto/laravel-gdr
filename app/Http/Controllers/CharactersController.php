@@ -12,4 +12,9 @@ class CharactersController extends Controller
         $characters = Character::all();
         return view("guest.index", compact("characters"));
     }
+
+    public function create() {
+
+        return view ('characters.create');
+    }
 }

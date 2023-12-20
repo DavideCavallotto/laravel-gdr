@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Guest\PageController;
 
 Route::get('/', [CharactersController::class, 'index'])->name('index');
+
+Route::get('/characters/create',[CharactersController::class, 'create'])
+->name('characters.create');
