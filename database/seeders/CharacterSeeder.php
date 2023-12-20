@@ -27,4 +27,5 @@ class CharacterSeeder extends Seeder
             $new_character->save();
         }
     }
+
 }
