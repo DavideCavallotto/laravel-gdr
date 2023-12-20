@@ -32,6 +32,9 @@ class CharactersController extends Controller
         return view ('characters.create');
     }
 
+    /**
+     * STORE
+     */
     public function store(Request $request) {
 
         $data = $request->all();
