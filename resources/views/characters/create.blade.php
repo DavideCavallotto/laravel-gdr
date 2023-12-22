@@ -2,7 +2,7 @@
 
 @section('content')
     <section>
-        <div class="container my-0 mx-auto flex justify-center mt-[230px]">
+        <div class="flex justify-center items-center min-h-[calc(100svh-72px)]">
             <form action="{{ route('characters.store') }}" method="POST" class="w-full max-w-lg">
                 @csrf
                 <div class="flex flex-wrap -mx-3 mb-6">
