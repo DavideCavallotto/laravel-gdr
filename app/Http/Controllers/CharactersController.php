@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Character;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class CharactersController extends Controller
@@ -29,13 +30,27 @@ class CharactersController extends Controller
      */
     public function create() {
 
-        return view ('characters.create');
+        $types = Type::all();
+        return view ('characters.create', compact('types'));
     }
 
     /**
      * STORE
      */
     public function store(Request $request) {
+
+
+        $request->validate([
+            'nome' => 'required|max:255',
+            'bio' => 'required',
+            'attacco' => 'nullable',
+            'difesa' => 'nullable',
+            'velocità' => 'nullable',
+            'hp'=> 'nullable',
+            'type_id' => 'nullable|exists:types,id',
+
+
+        ]);
 
         $data = $request->all();
 
@@ -46,11 +61,28 @@ class CharactersController extends Controller
 
     public function edit (Character $character) {
 
-        return view('characters.edit',compact('character'));
+
+
+
+        $types = Type::all();
+        return view('characters.edit',compact('character', 'types'));
 
     }
 
     public function update (Request $request, Character $character) {
+
+
+        $request->validate([
+            'nome' => 'required|max:255',
+            'bio' => 'required',
+            'attacco' => 'nullable',
+            'difesa' => 'nullable',
+            'velocità' => 'nullable',
+            'hp'=> 'nullable',
+            'type_id' => 'nullable|exists:types,id',
+
+
+        ]);
 
         $data = $request->all();
 
