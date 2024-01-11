@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome', 30);
             $table->text('bio');
+            $table->tinyInteger('attacco')->default(30);
             $table->tinyInteger('difesa')->default(30);
             $table->tinyInteger('velocità')->default(70);
             $table->tinyInteger('hp')->default(50);

@@ -9,13 +9,12 @@ class Character extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'nome',
-        'bio',
-        'difesa',
-        'velocità',
-        'hp',
-        'updated_at',
-        'created_at'
+    protected $guarded = [
+
     ];
+
+    public function type() {
+
+        return $this->belongsTo(Type::class);
+    }
 }

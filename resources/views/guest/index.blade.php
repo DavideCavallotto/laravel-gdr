@@ -36,6 +36,12 @@
                                         = {{ $character->hp }}
                                     </span>
                                 </li>
+                                <li class="flex gap-2 items-center">
+                                    <img width="28" height="28" src="https://img.icons8.com/color/48/sword.png" alt="sword"/>
+                                    <span>
+                                        = {{ $character->attacco }}
+                                    </span>
+                                </li>
                             </ul>
                         </a>
                     </li>

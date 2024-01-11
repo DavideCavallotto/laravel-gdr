@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('items', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->text('description');
-            $table->timestamps();
+        Schema::table('characters', function (Blueprint $table) {
+            $table->foreignId('type_id')->constrained()->cascadeOnDelete();
         });
     }
 
@@ -24,6 +21,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('items');
+        Schema::table('characters', function (Blueprint $table) {
+            $table->dropForeign(['type_id']);
+            $table->dropColumn('type_id');
+
+        });
     }
 };

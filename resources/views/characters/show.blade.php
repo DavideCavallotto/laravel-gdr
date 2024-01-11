@@ -11,7 +11,12 @@
                     <p>
                         {{ $character->bio }}
                     </p>
-                    <ul class="flex items-center gap-4 justify-around mt-20">
+                    <strong>
+                        {{ $character->type->name }}
+                    </strong>
+                    <p>
+                        {{$character->type->description}}
+                    </p>
                         <li class="flex gap-2 items-center">
                             <img class=" translate-y-[3px]" width="28" height="28"
                                 src="https://img.icons8.com/parakeet/48/000000/shield.png" alt="shield" />
@@ -31,6 +36,12 @@
                                 alt="undertale-heart" />
                             <span>
                                 = {{ $character->hp }}
+                            </span>
+                        </li>
+                        <li class="flex gap-2 items-center">
+                            <img width="28" height="28" src="https://img.icons8.com/color/48/sword.png" alt="sword"/>
+                            <span>
+                                = {{ $character->attacco }}
                             </span>
                         </li>
                         <a class="bg-emerald-400 hover:bg-emerald-500 transition-colors duration-200 px-10 rounded py-2 uppercase"

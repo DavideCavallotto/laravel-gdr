@@ -49,11 +49,30 @@
                             class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                             id="hp" type="number" placeholder="HP" name="hp" min="20" max="100">
                     </div>
+                    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
+                            Attacco
+                        </label>
+                        <input
+                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            id="attacco" type="number" placeholder="attacco" name="attacco" min="20" max="100">
+                    </div>
+
+
                     <div class="w-full px-3 mb-6 md:mb-0 pt-5 text-center">
                         <button
                             class="bg-blue-600 hover:bg-blue-700 transition-colors duration-300 w-full p-3 rounded-lg text-white"
                             type="submit">Create</button>
                     </div>
+                    <div class="mb-3">
+                        <label for="typetype_id" class="form-label">Categorie</label>
+                        <select name="type_id" class="form-control" id="type_id">
+                          <option>Seleziona una categoria</option>
+                          @foreach($types as $type)
+                            <option @selected( old('type_id') == $type->id ) value="{{ $type->id }}">{{ $type->name }}</option>
+                          @endforeach
+                        </select>
+                      </div>
                 </div>
 
             </form>
