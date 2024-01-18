@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Character;
 use App\Models\Type;
+use App\Models\Item;
 use Illuminate\Http\Request;
 
 class CharactersController extends Controller
@@ -31,7 +32,8 @@ class CharactersController extends Controller
     public function create() {
 
         $types = Type::all();
-        return view ('characters.create', compact('types'));
+        $items = Item::all();
+        return view ('characters.create', compact('types','items'));
     }
 
     /**
@@ -40,7 +42,7 @@ class CharactersController extends Controller
     public function store(Request $request) {
 
 
-        $request->validate([
+        $validField = $request->validate([
             'nome' => 'required|max:255',
             'bio' => 'required',
             'attacco' => 'nullable',
@@ -48,13 +50,19 @@ class CharactersController extends Controller
             'velocità' => 'nullable',
             'hp'=> 'nullable',
             'type_id' => 'nullable|exists:types,id',
-
+            'items.*' => 'nullable|exists:items,id',
 
         ]);
 
-        $data = $request->all();
+        $data = $validField;
 
+        
         $new_character = Character::create($data);
+        
+        if ($request->has('items')) {
+            $new_character->items()->attach($data['items']);
+        }
+        
 
         return redirect()->route('characters.show',$new_character);
     }
@@ -62,17 +70,16 @@ class CharactersController extends Controller
     public function edit (Character $character) {
 
 
-
-
         $types = Type::all();
-        return view('characters.edit',compact('character', 'types'));
+        $items = Item::all();
+        return view('characters.edit',compact('character', 'types', 'items'));
 
     }
 
     public function update (Request $request, Character $character) {
 
 
-        $request->validate([
+        $validField = $request->validate([
             'nome' => 'required|max:255',
             'bio' => 'required',
             'attacco' => 'nullable',
@@ -80,12 +87,16 @@ class CharactersController extends Controller
             'velocità' => 'nullable',
             'hp'=> 'nullable',
             'type_id' => 'nullable|exists:types,id',
-
-
+            'items.*' => 'exists:items,id',
         ]);
 
-        $data = $request->all();
-
+        $data = $validField;
+        if ($request->has('items')) {
+            $character->items()->sync($data['items']);
+        }
+        else{
+            $character->items()->detach();
+        }
         $character->update($data);
 
         return redirect()->route('characters.show',$character);

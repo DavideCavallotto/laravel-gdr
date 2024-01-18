@@ -57,13 +57,6 @@
                             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                             id="attacco" type="number" placeholder="attacco" name="attacco" min="20" max="100">
                     </div>
-
-
-                    <div class="w-full px-3 mb-6 md:mb-0 pt-5 text-center">
-                        <button
-                            class="bg-blue-600 hover:bg-blue-700 transition-colors duration-300 w-full p-3 rounded-lg text-white"
-                            type="submit">Create</button>
-                    </div>
                     <div class="mb-3">
                         <label for="typetype_id" class="form-label">Categorie</label>
                         <select name="type_id" class="form-control" id="type_id">
@@ -73,9 +66,38 @@
                           @endforeach
                         </select>
                       </div>
+
+                      <div class="form-group mb-3">
+                        <p>Seleziona i tag:</p>
+                        <div class="d-flex flex-wrap gap-4 ">
+                          @foreach ($items as $item)
+                            <div class="form-check">
+                              <input name="items[]" class="form-check-input" type="checkbox" value="{{$item->id}}" id="item-{{$item->id}}" @checked( in_array($item->id, old('items',[]) ) ) >
+                              <label class="form-check-label" for="item-{{$item->id}}">
+                                {{ $item->name }}
+                              </label>
+                            </div>
+                          @endforeach
+                        </div>
+                      </div>
+
+                    <div class="w-full px-3 mb-6 md:mb-0 pt-5 text-center">
+                        <button
+                            class="bg-blue-600 hover:bg-blue-700 transition-colors duration-300 w-full p-3 rounded-lg text-white"
+                            type="submit">Create</button>
+                    </div>
                 </div>
 
             </form>
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li class="text-red-500 bg-white">{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         </div>
     </section>
 @endsection

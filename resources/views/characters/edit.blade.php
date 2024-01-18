@@ -71,17 +71,40 @@
                         <select name="type_id" class="form-control" id="type_id">
                           <option>Seleziona una categoria</option>
                           @foreach($types as $type)
-                            <option @selected( old('type_id', $character->type->name) == $type->id ) value="{{ $type->id }}">{{ $type->name }}</option>
+                            <option @selected( old('type_id', optional($character->type)->id) == $type->id) value="{{ $type->id }}">{{ $type->name }}</option>
                           @endforeach
                         </select>
                       </div>
+                      <div class="form-group mb-3">
+                        <p>Seleziona gli items:</p>
+                        <div class="d-flex flex-wrap gap-4 ">
+                          @foreach ($items as $item)
+                            <div class="form-check">
+                              <input name="items[]" class="form-check-input" type="checkbox" value="{{$item->id}}" id="item-{{$item->id}}" @checked(in_array($item->id, old('items',$character->items->pluck('id')->all()))) >
+                              <label class="form-check-label" for="item-{{$item->id}}">
+                                {{ $item->name }}
+                              </label>
+                            </div>
+                          @endforeach
+                        </div>
+                      </div>
 
+                      <input type="hidden" name="password" value="fakepassword">
                     <div class="w-full px-3 mb-6 md:mb-0 pt-5 text-center">
-                        <button class="bg-blue-600 p-3 rounded-lg text-white" type="submit">Create</button>
+                        <button class="bg-blue-600 p-3 rounded-lg text-white" type="submit">Edit</button>
                     </div>
                 </div>
 
             </form>
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li class="text-red-500 bg-white w-[25%] text-center">{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         </div>
     </section>
 @endsection

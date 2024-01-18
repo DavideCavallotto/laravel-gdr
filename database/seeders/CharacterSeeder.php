@@ -19,8 +19,8 @@ class CharacterSeeder extends Seeder
 
         $types = Type::all();
         $typeIds = $types->pluck('id');
-        // $items = Item::all();
-        // $itemesIds = $items->pluck('id'); 
+        $items = Item::all();
+        $itemesIds = $items->pluck('id'); 
 
 
         for ($i = 0; $i < 100; $i++) {
@@ -37,6 +37,7 @@ class CharacterSeeder extends Seeder
             // $new_character->items = $faker->randomElements($itemesIds,3);
             $new_character->type_id = $typeIds->random();
             $new_character->save();
+            $new_character->items()->attach($faker->randomElements($itemesIds,null));
         }
     }
 

@@ -10,7 +10,7 @@ class Character extends Model
     use HasFactory;
 
     protected $guarded = [
-
+        'password'
     ];
 
     public function type() {

@@ -17,6 +17,13 @@
                     <p>
                         {{$character->type->description}}
                     </p>
+                    <ul>
+                        @forelse ($character->items as $item)
+                            <li>{{$item->name}}</li>
+                        @empty
+                            <li>nessun item</li>
+                        @endforelse
+                    </ul>
                         <li class="flex gap-2 items-center">
                             <img class=" translate-y-[3px]" width="28" height="28"
                                 src="https://img.icons8.com/parakeet/48/000000/shield.png" alt="shield" />
