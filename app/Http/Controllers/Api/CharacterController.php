@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class CharacterController extends Controller
 {
     public function index(Request $request){
-        $results = Character::with('type', 'item')->paginate(20);
+        $results = Character::with('type', 'items')->paginate(20);
 
         return response()->json([
             'characters' => $results,
@@ -17,7 +17,7 @@ class CharacterController extends Controller
         ]);
     }
     public function show(Character $character){
-        $character->load('type', 'item');
+        $character->load('type', 'items');
 
         return response()->json([
             'project' => $character,
