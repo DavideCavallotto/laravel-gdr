@@ -20,4 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/characters', [CharacterController::class, 'index']);
-Route::get('/characters/{character:slug}', [CharacterController::class, 'show']);  
+Route::get('/characters/{character:id}', [CharacterController::class, 'show']);  
