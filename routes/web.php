@@ -48,6 +48,5 @@ Route::put('/characters/{character}', [CharactersController::class, 'update'])
 
 Route::delete('characters/{character}', [CharactersController::class, 'destroy'])
     ->name('characters.destroy');
-
-
+  
 require __DIR__ . '/auth.php';
